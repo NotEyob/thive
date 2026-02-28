@@ -15,30 +15,32 @@ export default function AnimateIn({
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
-  const variants = {
-    hidden: {
+  const getInitial = () => {
+    return {
       opacity: 0,
       y: direction === 'up' ? 40 : 0,
       x: direction === 'left' ? -40 : direction === 'right' ? 40 : 0
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      transition: {
-        duration: 0.7,
-        delay,
-        ease: [0.16, 1, 0.3, 1]
-      }
+    }
+  }
+
+  const getAnimate = () => {
+    return {
+      opacity: inView ? 1 : 0,
+      y: inView ? 0 : direction === 'up' ? 40 : 0,
+      x: inView ? 0 : direction === 'left' ? -40 : direction === 'right' ? 40 : 0
     }
   }
 
   return (
     <motion.div
       ref={ref}
-      variants={variants}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
+      initial={getInitial()}
+      animate={getAnimate()}
+      transition={{
+        duration: 0.7,
+        delay,
+        ease: 'easeOut'
+      }}
     >
       {children}
     </motion.div>
