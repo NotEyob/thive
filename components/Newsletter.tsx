@@ -5,17 +5,44 @@ import AnimateIn from './AnimateIn'
 
 export default function Newsletter() {
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'exists'>('idle')
+  const [message, setMessage] = useState('')
 
   const handleSubmit = async () => {
     if (!email || !email.includes('@')) {
       setStatus('error')
+      setMessage('Enter a valid email')
       return
     }
-    // When you're ready, replace this with your Mailchimp API call
-    setStatus('success')
-    setEmail('')
-    setTimeout(() => setStatus('idle'), 4000)
+
+    setStatus('loading')
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        if (data.error === 'Already subscribed') {
+          setStatus('exists')
+          setMessage('You\'re already on the list.')
+        } else {
+          setStatus('error')
+          setMessage('Something went wrong. Try again.')
+        }
+        return
+      }
+
+      setStatus('success')
+      setEmail('')
+    } catch {
+      setStatus('error')
+      setMessage('Something went wrong. Try again.')
+    }
   }
 
   return (
@@ -54,50 +81,54 @@ export default function Newsletter() {
               border: '1px solid var(--red)',
               fontSize: '0.65rem', letterSpacing: '0.2em',
               textTransform: 'uppercase', color: 'var(--red)'
-            }}>✓ You're in. Watch your inbox.</div>
+            }}>✓ You're in. Check your inbox.</div>
           ) : (
-            <div style={{ display: 'flex', gap: '0', maxWidth: '480px', margin: '0 auto' }}>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => { setEmail(e.target.value); setStatus('idle') }}
-                onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-                style={{
-                  flex: 1,
-                  padding: '16px 20px',
-                  background: 'transparent',
-                  border: `1px solid ${status === 'error' ? 'var(--red)' : 'var(--mid)'}`,
-                  borderRight: 'none',
-                  color: 'var(--white)',
-                  fontSize: '0.65rem',
-                  letterSpacing: '0.05em',
-                  fontFamily: 'Space Mono, monospace',
-                  outline: 'none'
-                }}
-              />
-              <button
-                onClick={handleSubmit}
-                style={{
-                  padding: '16px 28px',
-                  background: 'var(--white)',
-                  color: 'var(--black)',
-                  border: 'none',
-                  fontSize: '0.65rem',
-                  letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                  cursor: 'pointer',
-                  fontFamily: 'Space Mono, monospace',
-                  whiteSpace: 'nowrap'
-                }}
-              >Notify Me</button>
-            </div>
-          )}
+            <>
+              <div style={{ display: 'flex', gap: '0', maxWidth: '480px', margin: '0 auto' }}>
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setStatus('idle') }}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
+                  style={{
+                    flex: 1,
+                    padding: '16px 20px',
+                    background: 'transparent',
+                    border: `1px solid ${status === 'error' ? 'var(--red)' : 'var(--mid)'}`,
+                    borderRight: 'none',
+                    color: 'var(--white)',
+                    fontSize: '0.65rem',
+                    letterSpacing: '0.05em',
+                    fontFamily: 'Space Mono, monospace',
+                    outline: 'none'
+                  }}
+                />
+                <button
+                  onClick={handleSubmit}
+                  disabled={status === 'loading'}
+                  style={{
+                    padding: '16px 28px',
+                    background: status === 'loading' ? 'var(--mid)' : 'var(--white)',
+                    color: 'var(--black)',
+                    border: 'none',
+                    fontSize: '0.65rem',
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
+                    cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+                    fontFamily: 'Space Mono, monospace',
+                    whiteSpace: 'nowrap'
+                  }}
+                >{status === 'loading' ? 'Sending...' : 'Notify Me'}</button>
+              </div>
 
-          {status === 'error' && (
-            <p style={{ fontSize: '0.55rem', color: 'var(--red)', letterSpacing: '0.15em', marginTop: '8px', textTransform: 'uppercase' }}>
-              Enter a valid email
-            </p>
+              {(status === 'error' || status === 'exists') && (
+                <p style={{
+                  fontSize: '0.55rem', color: 'var(--red)',
+                  letterSpacing: '0.15em', marginTop: '8px', textTransform: 'uppercase'
+                }}>{message}</p>
+              )}
+            </>
           )}
         </div>
       </AnimateIn>
