@@ -1,0 +1,23 @@
+:root {
+  --black: #080808;
+  --white: #f0ede6;
+  --red: #c8001a;
+  --grey: #1a1a1a;
+  --mid: #2e2e2e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-space), monospace;
+  cursor: crosshair;
+  overflow-x: hidden;
+}
