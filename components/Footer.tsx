@@ -14,10 +14,10 @@ export default function Footer() {
           <div>
             <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '3rem', letterSpacing: '0.3em' }}>THIVE</div>
             <p style={{
-              fontSize: '0.6rem', letterSpacing: '0.1em', color: 'rgba(240,237,230,0.4)',
+              fontSize: '0.8rem', letterSpacing: '0.1em', color: 'rgba(240,237,230,0.4)',
               marginTop: '12px', fontStyle: 'italic', lineHeight: 1.8
             }}>
-              "Built for those<br />who move in silence<br />and dress like war."
+              "Made for people<br />who dress smart<br />and think smart."
             </p>
           </div>
 
