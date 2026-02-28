@@ -131,19 +131,19 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <button style={{
-                width: '100%',
+              <a href="/checkout" style={{
+                display: 'block',
+                textAlign: 'center',
                 padding: '20px',
                 background: 'var(--white)',
                 color: 'var(--black)',
-                border: 'none',
+                textDecoration: 'none',
                 fontSize: '0.7rem',
                 letterSpacing: '0.3em',
                 textTransform: 'uppercase',
-                cursor: 'pointer',
                 fontFamily: 'Space Mono, monospace',
                 marginBottom: '12px'
-              }}>Proceed to Checkout</button>
+                }}>Proceed to Checkout</a>
 
               <button
                 onClick={() => window.history.back()}
