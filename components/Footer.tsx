@@ -54,7 +54,11 @@ export default function Footer() {
         display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px'
       }}>
         <p style={{ fontSize: '0.55rem', letterSpacing: '0.15em', color: 'rgba(240,237,230,0.25)', textTransform: 'uppercase' }}>© 2026 THIVE. All rights reserved.</p>
-        <p style={{ fontSize: '0.55rem', letterSpacing: '0.15em', color: 'rgba(240,237,230,0.25)', textTransform: 'uppercase' }}>Privacy Policy — Terms</p>
+        <p style={{ fontSize: '0.55rem', letterSpacing: '0.15em', color: 'rgba(240,237,230,0.25)', textTransform: 'uppercase' }}>
+       <a href="/privacy" style={{ color: 'rgba(240,237,230,0.25)', textDecoration: 'none' }}>Privacy Policy</a>
+      {' — '}
+      <a href="/terms" style={{ color: 'rgba(240,237,230,0.25)', textDecoration: 'none' }}>Terms</a>
+      </p>
       </div>
 
       <style>{`
