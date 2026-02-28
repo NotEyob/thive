@@ -1,9 +1,9 @@
-import Navbar from '@/components/Navbar'
+
 
 export default function Terms() {
   return (
     <main style={{ background: 'var(--black)', minHeight: '100vh', color: 'var(--white)' }}>
-      <Navbar />
+      
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '140px 24px 80px' }}>
 
         <p style={{ fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '16px' }}>Legal</p>

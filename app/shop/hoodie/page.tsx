@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Navbar from '@/components/Navbar'
 import { useCart } from '@/context/CartContext'
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
@@ -27,7 +26,7 @@ export default function Hoodie() {
 
   return (
     <main style={{ background: 'var(--black)', minHeight: '100vh', color: 'var(--white)' }}>
-      <Navbar />
+      
 
       <div style={{
         display: 'grid',

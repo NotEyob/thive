@@ -3,6 +3,7 @@ import { Bebas_Neue, Space_Mono } from 'next/font/google'
 import './globals.css'
 import { CartProvider } from '@/context/CartContext'
 import CartSidebar from '@/components/CartSidebar'
+import Navbar from '@/components/Navbar'
 
 const bebas = Bebas_Neue({
   weight: '400',
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${bebas.variable} ${spaceMono.variable}`}>
       <body>
         <CartProvider>
+          <Navbar />
           {children}
           <CartSidebar />
         </CartProvider>

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Navbar from '@/components/Navbar'
 import { useCart } from '@/context/CartContext'
 
 export default function Checkout() {
@@ -21,7 +20,7 @@ export default function Checkout() {
 
   return (
     <main style={{ background: 'var(--black)', minHeight: '100vh', color: 'var(--white)' }}>
-      <Navbar />
+      
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '140px 48px 80px', display: 'grid', gridTemplateColumns: '1fr 380px', gap: '80px', alignItems: 'start' }}>
 

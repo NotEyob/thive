@@ -14,19 +14,25 @@ export default function Footer() {
           <div>
             <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '3rem', letterSpacing: '0.3em' }}>THIVE</div>
             <p style={{
-              fontSize: '0.8rem', letterSpacing: '0.1em', color: 'rgba(240,237,230,0.4)',
+              fontSize: '0.6rem', letterSpacing: '0.1em', color: 'rgba(240,237,230,0.4)',
               marginTop: '12px', fontStyle: 'italic', lineHeight: 1.8
             }}>
-              "Made for people<br />who dress smart<br />and think smart."
+              Made for people who<br />dress smart and think smart.
             </p>
           </div>
 
           <div>
             <h4 style={{ fontSize: '0.6rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '20px' }}>Navigate</h4>
             <ul style={{ listStyle: 'none' }}>
-              {['Shop', 'Lookbook', 'About', 'Size Guide', 'Contact'].map((item) => (
-                <li key={item} style={{ marginBottom: '10px' }}>
-                  <a href="#" style={{ color: 'rgba(240,237,230,0.5)', textDecoration: 'none', fontSize: '0.65rem', letterSpacing: '0.1em' }}>{item}</a>
+              {[
+                { label: 'Shop', href: '/#shop' },
+                { label: 'Lookbook', href: '/#lookbook' },
+                { label: 'About', href: '/#about' },
+                { label: 'Size Guide', href: '#' },
+                { label: 'Contact', href: '#' },
+              ].map((item) => (
+                <li key={item.label} style={{ marginBottom: '10px' }}>
+                  <a href={item.href} style={{ color: 'rgba(240,237,230,0.5)', textDecoration: 'none', fontSize: '0.65rem', letterSpacing: '0.1em' }}>{item.label}</a>
                 </li>
               ))}
             </ul>
@@ -38,7 +44,7 @@ export default function Footer() {
               {[
                 { label: 'Instagram', href: 'https://www.instagram.com/thive.mind/' },
                 { label: 'TikTok', href: 'https://www.tiktok.com/@thi5etree' },
-                { label: 'Twitter / X', href: '#' },
+                { label: 'Twitter / X', href: 'https://x.com/thivetree' },
               ].map((item) => (
                 <li key={item.label} style={{ marginBottom: '10px' }}>
                   <a href={item.href} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(240,237,230,0.5)', textDecoration: 'none', fontSize: '0.65rem', letterSpacing: '0.1em' }}>{item.label}</a>
@@ -55,10 +61,10 @@ export default function Footer() {
       }}>
         <p style={{ fontSize: '0.55rem', letterSpacing: '0.15em', color: 'rgba(240,237,230,0.25)', textTransform: 'uppercase' }}>© 2026 THIVE. All rights reserved.</p>
         <p style={{ fontSize: '0.55rem', letterSpacing: '0.15em', color: 'rgba(240,237,230,0.25)', textTransform: 'uppercase' }}>
-       <a href="/privacy" style={{ color: 'rgba(240,237,230,0.25)', textDecoration: 'none' }}>Privacy Policy</a>
-      {' — '}
-      <a href="/terms" style={{ color: 'rgba(240,237,230,0.25)', textDecoration: 'none' }}>Terms</a>
-      </p>
+         <a href="/privacy" style={{ color: 'rgba(240,237,230,0.7)', textDecoration: 'underline', textUnderlineOffset: '4px', cursor: 'pointer', fontSize: '0.65rem', letterSpacing: '0.15em', fontWeight: 'bold' }}>Privacy Policy</a>
+        {' — '}
+        <a href="/terms" style={{ color: 'rgba(240,237,230,0.7)', textDecoration: 'underline', textUnderlineOffset: '4px', cursor: 'pointer', fontSize: '0.65rem', letterSpacing: '0.15em', fontWeight: 'bold' }}>Terms</a>
+        </p>
       </div>
 
       <style>{`

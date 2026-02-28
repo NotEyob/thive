@@ -1,6 +1,5 @@
 'use client'
 
-import Navbar from '@/components/Navbar'
 import { useCart } from '@/context/CartContext'
 
 export default function CartPage() {
@@ -8,7 +7,7 @@ export default function CartPage() {
 
   return (
     <main style={{ background: 'var(--black)', minHeight: '100vh', color: 'var(--white)' }}>
-      <Navbar />
+      
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '140px 48px 80px' }}>
 
