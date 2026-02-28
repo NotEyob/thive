@@ -1,5 +1,7 @@
 'use client'
 
+import AnimateIn from './AnimateIn'
+
 export default function Footer() {
   return (
     <footer style={{
@@ -7,43 +9,45 @@ export default function Footer() {
       borderTop: '1px solid var(--mid)',
       padding: '60px 24px 40px'
     }}>
-      <div className="footer-grid">
-        <div>
-          <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '3rem', letterSpacing: '0.3em' }}>THIVE</div>
-          <p style={{
-            fontSize: '0.6rem', letterSpacing: '0.1em', color: 'rgba(240,237,230,0.4)',
-            marginTop: '12px', fontStyle: 'italic', lineHeight: 1.8
-          }}>
-            "Built for those<br />who move in silence<br />and dress like war."
-          </p>
-        </div>
+      <AnimateIn>
+        <div className="footer-grid">
+          <div>
+            <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '3rem', letterSpacing: '0.3em' }}>THIVE</div>
+            <p style={{
+              fontSize: '0.6rem', letterSpacing: '0.1em', color: 'rgba(240,237,230,0.4)',
+              marginTop: '12px', fontStyle: 'italic', lineHeight: 1.8
+            }}>
+              "Built for those<br />who move in silence<br />and dress like war."
+            </p>
+          </div>
 
-        <div>
-          <h4 style={{ fontSize: '0.6rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '20px' }}>Navigate</h4>
-          <ul style={{ listStyle: 'none' }}>
-            {['Shop', 'Lookbook', 'About', 'Size Guide', 'Contact'].map((item) => (
-              <li key={item} style={{ marginBottom: '10px' }}>
-                <a href="#" style={{ color: 'rgba(240,237,230,0.5)', textDecoration: 'none', fontSize: '0.65rem', letterSpacing: '0.1em' }}>{item}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div>
+            <h4 style={{ fontSize: '0.6rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '20px' }}>Navigate</h4>
+            <ul style={{ listStyle: 'none' }}>
+              {['Shop', 'Lookbook', 'About', 'Size Guide', 'Contact'].map((item) => (
+                <li key={item} style={{ marginBottom: '10px' }}>
+                  <a href="#" style={{ color: 'rgba(240,237,230,0.5)', textDecoration: 'none', fontSize: '0.65rem', letterSpacing: '0.1em' }}>{item}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div>
-          <h4 style={{ fontSize: '0.6rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '20px' }}>Follow</h4>
-          <ul style={{ listStyle: 'none' }}>
-            {[
-              { label: 'Instagram', href: 'https://www.instagram.com/thive.mind/' },
-              { label: 'TikTok', href: 'https://www.tiktok.com/@thi5etree' },
-              { label: 'Twitter / X', href: '#' },
-            ].map((item) => (
-              <li key={item.label} style={{ marginBottom: '10px' }}>
-                <a href={item.href} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(240,237,230,0.5)', textDecoration: 'none', fontSize: '0.65rem', letterSpacing: '0.1em' }}>{item.label}</a>
-              </li>
-            ))}
-          </ul>
+          <div>
+            <h4 style={{ fontSize: '0.6rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--red)', marginBottom: '20px' }}>Follow</h4>
+            <ul style={{ listStyle: 'none' }}>
+              {[
+                { label: 'Instagram', href: 'https://www.instagram.com/thive.mind/' },
+                { label: 'TikTok', href: 'https://www.tiktok.com/@thi5etree' },
+                { label: 'Twitter / X', href: '#' },
+              ].map((item) => (
+                <li key={item.label} style={{ marginBottom: '10px' }}>
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(240,237,230,0.5)', textDecoration: 'none', fontSize: '0.65rem', letterSpacing: '0.1em' }}>{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
+      </AnimateIn>
 
       <div style={{
         borderTop: '1px solid var(--mid)', paddingTop: '24px', marginTop: '40px',
